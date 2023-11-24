@@ -10,5 +10,27 @@
  Pandas Library
  My SQL Database
  # Installing
- 
+ Firstly, you will have to install the required Python packages. In your terminal or Jupyter notebook cell, you can use the following commands:
+ ```bash
+pip install pandas sqlalchemy pymysql
+```
+import the required libraries in the python script:
+ ```bash
+import pandas as pd
+from sqlalchemy import create_engine
+ ```
+To connect to your MySQL database "assignment4 omar", use sqlalchemy's create_engine function. Replace the placeholders with the credentials from your database:
+```bash
+#create engine
+engine = create_engine('mysql+pymysql://username:password@host:port/assignment4 omar')
+ ```
+use this engine to establish the connection
+```bash
+#create engine
+conn = engine.connect()
+ ```
+
+Now, we are ready to perform the analysis
+The dataset can be downloaded using the following link:
+
  
