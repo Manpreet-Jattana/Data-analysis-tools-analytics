@@ -31,6 +31,10 @@ conn = engine.connect()
  ```
 
 Now, we are ready to perform the analysis
-The dataset can be downloaded using the following link:
+The dataset can be downloaded using the following link:https://github.com/Manpreet-Jattana/Data-analysis-tools-analytics/blob/main/YouTube.csv
+
+# Running the analysis
+![image](https://github.com/Manpreet-Jattana/Data-analysis-tools-analytics/assets/151872435/4ec55340-572c-4801-a141-f52f1c46e4d6)
+
 
  
