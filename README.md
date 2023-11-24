@@ -55,7 +55,7 @@ Update the MySQL credentials in the notebook to match the ones set in your MySQL
 Continue running the cells, following the instructions provided in the notebook
 
 # Breakdown of test
--Load Dataset and sort: Loads the YouTube dataset from a CSV file, encoding it with 'latin-1', and sorts the DataFrame based on the 'subscribers' column in descending order.
+1. -Load Dataset and sort: Loads the YouTube dataset from a CSV file, encoding it with 'latin-1', and sorts the DataFrame based on the 'subscribers' column in descending order.
 ```python
 import pandas as pd
 #Load the dataset
@@ -64,7 +64,7 @@ data1 = pd.read_csv('youtube_dataset.csv', encoding='latin-1')
 data = data1.sort_values(by='subscribers', ascending=False)
  ```
 
--Calculate channel distribution
+2. Calculate channel distribution
  To determine the channel type distribution from the top 1000 records, define the calculate_channel_distribution function.
  ```python
 def calculate_channel_distribution(data):
@@ -74,7 +74,7 @@ channel_distribution_result = calculate_channel_distribution(data)
 print(channel_distribution_result)
  ```
 
--Load top 1000 data: To load the top 1000 records from the sorted dataset into a CSV file, define the load_data_top_1000 function.
+3. Load top 1000 data: To load the top 1000 records from the sorted dataset into a CSV file, define the load_data_top_1000 function.
 ```python
 def load_data_top_1000(data):
     top_1000_data = data.head(1000)
@@ -84,23 +84,23 @@ def load_data_top_1000(data):
 top_1000_data = load_data_top_1000(data)
  ```
 
--Display Loaded dataframe:  The loaded DataFrame (top_1000_data) is displayed to confirm that the loading procedure has completed correctly.
+4. Display Loaded dataframe:  The loaded DataFrame (top_1000_data) is displayed to confirm that the loading procedure has completed correctly.
 ```python
 top_1000_data.head()
  ```
 
--Read loaded CSV data:  The purpose of this function is to verify that the data stored is identical to the original by reading the top_1000_channels.csv CSV file back into a new DataFrame (data2)
+5. Read loaded CSV data:  The purpose of this function is to verify that the data stored is identical to the original by reading the top_1000_channels.csv CSV file back into a new DataFrame (data2)
 ```python
 data2 = pd.read_csv('top_1000_channels.csv')
 data2.head()
  ```
 
--Install Pymsql package: To enable the MySQL database connection, install the pymysql package.
+6. Install Pymsql package: To enable the MySQL database connection, install the pymysql package.
 ```python
 pip install pymysql
 ```
 
-- Database connection and query: Reads a short query into a DataFrame and establishes a MySQL database connection using SQLAlchemy.
+7. Database connection and query: Reads a short query into a DataFrame and establishes a MySQL database connection using SQLAlchemy.
   ```python
   from sqlalchemy import create_engine
 #Create engine
@@ -112,7 +112,7 @@ df = pd.read_sql("SELECT * FROM assignment4.youtube_dataset", conn)
 print(df.head())
 ```
 
-- Write data into my SQL table: The function writes the loaded DataFrame (data2) to the 'top_1000_channels.csv' MySQL database.
+8. Write data into my SQL table: The function writes the loaded DataFrame (data2) to the 'top_1000_channels.csv' MySQL database.
  ```python
 #Specify the table name in the database
 table_name = 'top_1000_channels.csv'
@@ -120,7 +120,7 @@ table_name = 'top_1000_channels.csv'
 data2.to_sql(table_name, con=engine, if_exists='replace', index=False)
 ```
 
-- check number of records in my SQL table: This code retrieves the number of rows (records) in the 'top_1000_channels.csv' table by querying the MySQL database.
+9. check number of records in my SQL table: This code retrieves the number of rows (records) in the 'top_1000_channels.csv' table by querying the MySQL database.
 ```python
 query_result = pd.read_sql(f"SELECT COUNT(*) FROM {table_name}", conn)
 print(query_result.iloc[0, 0])
