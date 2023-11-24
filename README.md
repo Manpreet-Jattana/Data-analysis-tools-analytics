@@ -5,4 +5,10 @@
  # Getting started
  # Prerequisites
  You will have to install
+ Anaconda
+ Python
+ Pandas Library
+ My SQL Database
+ # Installing
+ 
  
